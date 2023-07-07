@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:stt_mobile/api/Posting.dart';
 import 'package:stt_mobile/pages/DetailAnggota.dart';
+import 'package:stt_mobile/pages/DetailPostingan.dart';
 import 'package:stt_mobile/theme.dart';
 
 class HomePage extends StatefulWidget {
@@ -10,282 +12,98 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  final PostingController _postingController = PostingController();
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: biru.withOpacity(0.5),
+        title: Text('Untuk Anda',style: bold.copyWith(fontSize: 20,color: Colors.black),),
+        centerTitle: true,
+      ),
         body: SingleChildScrollView(
-      child: Column(
-        children: [
-          Container(
-            padding: const EdgeInsets.only(top: 40, right: 12),
-            height: 260,
-            color: hijau,
-            width: width,
-            child: Column(
-              children: [
-                const Align(
-                  alignment: Alignment.centerRight,
-                  child: Icon(
-                    Icons.settings,
-                    color: Colors.white,
-                    size: 40,
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 50),
-                  alignment: Alignment.center,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        'OM SUASTIASTU',
-                        style: bold.copyWith(
-                          fontSize: 24,
-                          color: Colors.white,
-                          shadows: [
-                            Shadow(
-                              offset: const Offset(
-                                  2, 2), // Menentukan posisi bayangan (x, y)
-                              blurRadius:
-                                  3, // Menentukan jarak sebaran bayangan
-                              color: Colors.black.withOpacity(
-                                  0.5), // Menentukan warna bayangan
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 6,
-                      ),
-                      Text(
-                        'Selamat Datang',
-                        style: bold.copyWith(
-                          fontSize: 14,
-                          color: Colors.white,
-                          shadows: [
-                            Shadow(
-                              offset: const Offset(
-                                  2, 2), // Menentukan posisi bayangan (x, y)
-                              blurRadius:
-                                  3, // Menentukan jarak sebaran bayangan
-                              color: Colors.black.withOpacity(
-                                  0.5), // Menentukan warna bayangan
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 18,
-                      ),
-                      Container(
-                        width: width,
-                        height: 50,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            TextButton.icon(
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Icons.person_pin,
-                                  size: 36,
-                                  color: Colors.black,
-                                ),
-                                label: Text(
-                                  'Made Kembar',
-                                  style: semibold.copyWith(
-                                      fontSize: 14, color: Colors.black),
-                                )),
-                            const Icon(
-                              Icons.notification_add_rounded,
-                              size: 36,
-                              color: Colors.black,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 16),
-            padding: const EdgeInsets.symmetric(horizontal: 12),
-            height: 200,
-            width: width,
-            child: Image.asset("assets/icons/image.png"),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 29),
-            padding: const EdgeInsets.symmetric(horizontal: 30),
-            height: 50,
-            width: width,
-            child: Text(
-              'Menu',
-              style: bold.copyWith(fontSize: 22, color: Colors.amber),
-            ),
-          ),
-          const SizedBox(
-            height: 12,
-          ),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
-            child: Row(
-              children: [
-                Column(
-                  children: [
-                    Container(
-                      height: 50,
-                      width: 150,
-                      decoration: BoxDecoration(
-                        color: hijau,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color:
-                                Colors.black.withOpacity(0.2), // Warna bayangan
-                            offset:
-                                const Offset(0, 3), // Posisi bayangan (x, y)
-                            blurRadius: 6, // Jarak sebaran bayangan
-                            spreadRadius: 0, // Meratakan bayangan (optional)
-                          ),
-                        ],
-                      ),
-                      child: TextButton.icon(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.calendar_month,
-                            size: 28,
-                            color: Colors.white,
-                          ),
-                          label: Text(
-                            'Agenda',
-                            style: semibold.copyWith(
-                                fontSize: 12, color: Colors.white),
-                          )),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      height: 50,
-                      width: 150,
-                      decoration: BoxDecoration(
-                        color: hijau,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color:
-                                Colors.black.withOpacity(0.2), // Warna bayangan
-                            offset:
-                                const Offset(0, 3), // Posisi bayangan (x, y)
-                            blurRadius: 6, // Jarak sebaran bayangan
-                            spreadRadius: 0, // Meratakan bayangan (optional)
-                          ),
-                        ],
-                      ),
-                      child: TextButton.icon(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.book_sharp,
-                            size: 28,
-                            color: Colors.white,
-                          ),
-                          label: Text(
-                            'Absen',
-                            style: semibold.copyWith(
-                                fontSize: 12, color: Colors.white),
-                          )),
-                    )
-                  ],
-                ),
-                const SizedBox(
-                  width: 20,
-                ),
-                Column(
-                  children: [
-                    Container(
-                      height: 50,
-                      width: 150,
-                      decoration: BoxDecoration(
-                        color: hijau,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color:
-                                Colors.black.withOpacity(0.2), // Warna bayangan
-                            offset:
-                                const Offset(0, 3), // Posisi bayangan (x, y)
-                            blurRadius: 6, // Jarak sebaran bayangan
-                            spreadRadius: 0, // Meratakan bayangan (optional)
-                          ),
-                        ],
-                      ),
-                      child: TextButton.icon(
-                          onPressed: () {
-                            Navigator.of(context)
-                                .push(MaterialPageRoute(builder: (context) {
-                              return const DetailAnggota();
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 40,horizontal: 9),
+        width: width,
+        height: height - 100,
+        child: FutureBuilder(
+          future: _postingController.getPostings(), 
+          builder: (context,snapshot)  {
+            if(snapshot.data == null) {
+                return Center(
+                child: CircularProgressIndicator(color: hijau,),
+              );
+            }else {
+              var postings =  snapshot.data!;
+              return GridView.builder(
+                      itemCount: postings.length, 
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: 3/4,
+                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 10,
+                      ), 
+                      itemBuilder: ((BuildContext context, index){
+                        var posting = postings[index];
+                        return GestureDetector(
+                          onTap: (){
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                              return DetailKonten(idPosting: posting["id"],);
                             }));
                           },
-                          icon: const Icon(
-                            Icons.people,
-                            size: 28,
-                            color: Colors.white,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.grey[200]
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Image.network("https://apimdl.000webhostapp.com/api/postings/image/${posting["id"]}",height: 180,width: width,fit: BoxFit.cover,),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 6),
+                                  child: Text(posting["title"],style: semibold.copyWith(fontSize: 12),),
+                                ),
+                                const SizedBox(
+                                      height: 10,
+                                      ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 6),
+                                  child: Row(
+                                    children: [
+                                      CircleAvatar(backgroundImage: AssetImage("assets/icons/image.png"),radius: 12,),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text('nama pengguna',style: regular.copyWith(fontSize: 8,color: Colors.black),),
+                                      const  SizedBox(
+                                        width: 32,
+                                      ),
+                                      Icon(Icons.favorite_border,size: 12,),
+                                      const SizedBox(
+                                        width: 3,
+                                      ),
+                                      Text('12',style: regular.copyWith(fontSize: 10),)
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
-                          label: Text(
-                            'Data Anggota',
-                            style: semibold.copyWith(
-                                fontSize: 12, color: Colors.white),
-                          )),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      height: 50,
-                      width: 150,
-                      decoration: BoxDecoration(
-                        color: hijau,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color:
-                                Colors.black.withOpacity(0.2), // Warna bayangan
-                            offset:
-                                const Offset(0, 3), // Posisi bayangan (x, y)
-                            blurRadius: 6, // Jarak sebaran bayangan
-                            spreadRadius: 0, // Meratakan bayangan (optional)
-                          ),
-                        ],
-                      ),
-                      child: TextButton.icon(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.attach_money_outlined,
-                            size: 28,
-                            color: Colors.white,
-                          ),
-                          label: Text(
-                            'Pembayaran',
-                            style: semibold.copyWith(
-                                fontSize: 12, color: Colors.white),
-                          )),
-                    )
-                  ],
-                )
-              ],
-            ),
-          )
-        ],
-      ),
+                        );
+                      })
+                    );
+            }
+          }
+        )
+      )
     ));
   }
 }
+
+
+

@@ -30,7 +30,7 @@ class _MainPageState extends State<MainPage> {
         children: [_pageOptions.elementAt(_currentIndex)],
       ),
       bottomNavigationBar: Container(
-        color: hijau,
+        color: Colors.white,
         child: SalomonBottomBar(
           currentIndex: _currentIndex,
           onTap: (i) => setState(() => _currentIndex = i),
@@ -38,33 +38,33 @@ class _MainPageState extends State<MainPage> {
             SalomonBottomBarItem(
                 icon: Icon(
                   Icons.home,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
                 title: const Text("Home"),
-                selectedColor: Colors.white),
+                selectedColor: Colors.black),
             SalomonBottomBarItem(
               icon: Icon(
-                Icons.attach_money_outlined,
-                color: Colors.white,
+                Icons.search,
+                color: Colors.black,
               ),
-              title: const Text("Store"),
-              selectedColor: Colors.white,
+              title: const Text("Search"),
+              selectedColor: Colors.black,
             ),
             SalomonBottomBarItem(
               icon: Icon(
-                Icons.info,
-                color: Colors.white,
+                Icons.upload,
+                color: Colors.black,
               ),
-              title: const Text("Info"),
-              selectedColor: Colors.white,
+              title: const Text("Upload"),
+              selectedColor: Colors.black,
             ),
             SalomonBottomBarItem(
               icon: Icon(
                 Icons.person,
-                color: Colors.white,
+                color: Colors.black,
               ),
               title: const Text("Profile"),
-              selectedColor: Colors.white,
+              selectedColor: Colors.black,
             ),
           ],
         ),
